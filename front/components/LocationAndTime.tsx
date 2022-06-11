@@ -19,6 +19,9 @@ const LocationAndTime: FC = () => {
 
   return !isSSR ? (
     <Flex flexBasis="30em" marginLeft="5em" direction="column">
+      <Text align="end" fontSize="xs" fontWeight="bold">
+        Local time:
+      </Text>
       {/* <Text align='end' fontSize='sm'>
       {time.toLocaleDateString('en-US',{ weekday: 'long' })}
       </Text> */}
@@ -30,9 +33,6 @@ const LocationAndTime: FC = () => {
         {time.getMinutes()}:
         {time.getUTCSeconds().toString().length === 1 && "0"}
         {time.getUTCSeconds()}
-      </Text>
-      <Text align="end" fontSize="xs" fontWeight="bold">
-        is your local time.
       </Text>
     </Flex>
   ) : (

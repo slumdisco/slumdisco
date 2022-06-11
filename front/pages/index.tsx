@@ -5,18 +5,20 @@ import BaseLayout from "../components/layout/BaseLayout";
 import LocationAndTime from "../components/LocationAndTime";
 import Gigs, { GigInterface } from "../components/MainSection/Gigs";
 import Merch from "../components/MainSection/Merch";
-import Mixes from "../components/MainSection/Mixes";
+import Mixes, { MixInterface } from "../components/MainSection/Mixes";
 import {
   GIGS_TABLE_ENDPOINT,
+  MIXES_TABLE_ENDPOINT,
   VENUES_TABLE_ENDPOINT,
 } from "../endpoints/endpoints";
 import { pillStyle } from "../theme/styles";
 
 interface HomePageProps {
   gigs: GigInterface[];
+  mixes: MixInterface[];
 }
 
-const Home: NextPage<HomePageProps> = ({ gigs }) => {
+const Home: NextPage<HomePageProps> = ({ gigs, mixes }) => {
   const tabs = ["mixes", "merch", "gigs"];
 
   return (
@@ -56,7 +58,7 @@ const Home: NextPage<HomePageProps> = ({ gigs }) => {
           templateRows={["repeat(3, 1fr)", "1fr"]}
           gap={6}
         >
-          <Mixes />
+          <Mixes mixes={mixes} />
           <Gigs gigs={gigs} />
           <Merch />
         </Grid>
@@ -83,9 +85,16 @@ export async function getStaticProps() {
       Venue: venues.find((v: any) => v.id === x.Venue[0]).name,
       country: venues.find((v: any) => v.id === x.Venue[0]).country,
     }));
+  const mixRes = await fetch(MIXES_TABLE_ENDPOINT, { headers: headers });
+  const mixes = (await mixRes.json()).records.map((x: any) => ({
+    id: x.id,
+    name: x.fields.name,
+    embedded: x.fields.embedded,
+  }));
   return {
     props: {
       gigs,
+      mixes,
       //venues,
     },
   };

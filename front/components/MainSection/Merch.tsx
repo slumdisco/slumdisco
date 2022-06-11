@@ -1,4 +1,4 @@
-import { Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import MainSectionContainer from "../layout/MainSectionContainer";
 
 const Merch = () => {
@@ -6,7 +6,8 @@ const Merch = () => {
     <MainSectionContainer omitBorder>
       <>
         <Text textDecoration="underline">MERCH</Text>
-        <p>something something</p>
+        <Box height="2em" />
+        <Text>Coming soon.</Text>
       </>
     </MainSectionContainer>
   );

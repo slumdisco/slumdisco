@@ -37,7 +37,7 @@ const GigsList: FC<{ gigs: GigInterface[] }> = ({ gigs }) => {
       {gigs.map((g, i) => {
         return (
           <Flex width="100%" direction="column" key={i}>
-            <Text>{g.Date}</Text>
+            <Text fontSize="xs">{g.Date}</Text>
             <Flex>
               {getUnicodeFlagIcon(g.country)}
               <Text ml="0.5em" fontSize="sm">
@@ -109,19 +109,19 @@ const Gigs: FC<{ gigs: GigInterface[] }> = ({ gigs }) => {
             <AccordionItem key={state}>
               <h2>
                 <AccordionButton
+                  px="0"
                   onClick={() => {
                     setCurrentState(state);
                   }}
                 >
-                  <Box flex="1" textAlign="left">
-                    <Text fontWeight="bold" fontSize="sm">
-                      {state}
-                    </Text>
+                  <Box flex="1" textAlign="left" px="0">
+                    <Text fontWeight="bold">{state}:</Text>
                   </Box>
                   {/* <AccordionIcon /> */}
                 </AccordionButton>
               </h2>
-              <AccordionPanel pb={4}>
+              <AccordionPanel padding="0">
+                <Box height="1em" />
                 <GigsList gigs={dateAwareGigs[state]} />
               </AccordionPanel>
             </AccordionItem>
