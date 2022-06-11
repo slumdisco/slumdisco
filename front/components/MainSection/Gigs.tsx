@@ -77,9 +77,8 @@ const Gigs: FC<{ gigs: GigInterface[] }> = ({ gigs }) => {
           <Text textDecoration="underline">GIGS</Text>
           <Flex justify="end" pr="0.5em">
             {states.map((x) => (
-              <Tilt>
+              <Tilt key={x}>
                 <Badge
-                  key={x}
                   {...pillStyle}
                   bgColor={currentState === x ? "blue" : "none"}
                   onClick={() => {

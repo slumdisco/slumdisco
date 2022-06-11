@@ -47,10 +47,10 @@ const Home: NextPage<HomePageProps> = ({ gigs, mixes }) => {
         </Flex>
         <Flex justify="start" width="100%" mb="1.5em" position='sticky'>
           {tabs.map((tab) => (
-            <Tilt>
+            <Tilt key={tab}>
               <Box>
                 {/* slightly more responsive this way */}
-                <Badge {...pillStyle} key={tab}>
+                <Badge {...pillStyle}>
                   <Text _hover={{ color: "white" }} fontSize="sm" color="red">
                     {tab}
                   </Text>
