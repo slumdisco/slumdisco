@@ -26,12 +26,7 @@ const Home: NextPage<HomePageProps> = ({ gigs, mixes }) => {
   return (
     <BaseLayout>
       <Flex direction="column">
-        <Flex
-          // id='ehehhe'
-          //   flexBasis={1}
-          //direction={["column", "row"]}
-          justify="space-between"
-        >
+        <Flex justify="space-between">
           <Flex direction="column">
             <Text fontSize="small">
               Slum Disco Soundsystem asdgshagdhas dasd asdsadljksadals some

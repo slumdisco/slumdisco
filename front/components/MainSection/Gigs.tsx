@@ -84,7 +84,8 @@ const Gigs: FC<{ gigs: GigInterface[] }> = ({ gigs }) => {
                   onClick={() => {
                     setCurrentState(x);
                   }}
-                  ml="1em"
+                  ml="0.5em"
+                  mr="0"
                   cursor="pointer"
                   //textDecoration={currentState === x ? "underline" : "none"}
                 >
