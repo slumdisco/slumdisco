@@ -47,6 +47,8 @@ export async function getStaticProps() {
     // const res = await fetch('https://.../posts')
     // const posts = await res.json()
     const time = 'abc'
+    console.log(process.env.AIR_TABLE_KEY);
+    
   
     // By returning { props: { posts } }, the Blog component
     // will receive `posts` as a prop at build time
