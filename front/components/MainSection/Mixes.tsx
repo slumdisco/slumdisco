@@ -5,7 +5,7 @@ const Mixes = () => {
   return (
     <MainSectionContainer>
       <>
-        <Text textDecoration="underline">Mixes</Text>
+        <Text textDecoration="underline">MIXES</Text>
         <p>something something</p>
       </>
     </MainSectionContainer>

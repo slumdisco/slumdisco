@@ -5,7 +5,7 @@ const Merch = () => {
   return (
     <MainSectionContainer omitBorder>
       <>
-        <Text textDecoration="underline">Merch</Text>
+        <Text textDecoration="underline">MERCH</Text>
         <p>something something</p>
       </>
     </MainSectionContainer>

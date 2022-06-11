@@ -3,14 +3,22 @@ import type { NextPage } from "next";
 import AnimatedName from "../components/AnimatedName";
 import BaseLayout from "../components/layout/BaseLayout";
 import LocationAndTime from "../components/LocationAndTime";
-import Gigs from "../components/MainSection/Gigs";
+import Gigs, { GigInterface } from "../components/MainSection/Gigs";
 import Merch from "../components/MainSection/Merch";
 import Mixes from "../components/MainSection/Mixes";
-import { flexDirection } from "../theme/responsiveStyles";
+import {
+  GIGS_TABLE_ENDPOINT,
+  VENUES_TABLE_ENDPOINT,
+} from "../endpoints/endpoints";
 import { pillStyle } from "../theme/styles";
 
-const tabs = ["mixes", "merch", "gigs"];
-const Home: NextPage = (props) => {
+interface HomePageProps {
+  gigs: GigInterface[];
+}
+
+const Home: NextPage<HomePageProps> = ({ gigs }) => {
+  const tabs = ["mixes", "merch", "gigs"];
+
   return (
     <BaseLayout>
       <VStack spacing="1.5em">
@@ -49,7 +57,7 @@ const Home: NextPage = (props) => {
           gap={6}
         >
           <Mixes />
-          <Gigs />
+          <Gigs gigs={gigs} />
           <Merch />
         </Grid>
       </VStack>
@@ -58,16 +66,27 @@ const Home: NextPage = (props) => {
 };
 
 export async function getStaticProps() {
-  // const res = await fetch('https://.../posts')
-  // const posts = await res.json()
-  const time = "abc";
-  console.log(process.env.AIR_TABLE_KEY);
+  var headers = new Headers();
+  headers.append("Authorization", `Bearer ${process.env.AIR_TABLE_KEY}`);
 
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
+  const venueRes = await fetch(VENUES_TABLE_ENDPOINT, { headers: headers });
+  const venues = (await venueRes.json()).records.map((x: any) => ({
+    id: x.id,
+    name: x.fields.Name,
+    country: x.fields.country,
+  }));
+  const gigRes = await fetch(GIGS_TABLE_ENDPOINT, { headers: headers });
+  const gigs = (await gigRes.json()).records
+    .map((x: any) => ({ ...x.fields }))
+    .map((x: any) => ({
+      ...x,
+      Venue: venues.find((v: any) => v.id === x.Venue[0]).name,
+      country: venues.find((v: any) => v.id === x.Venue[0]).country,
+    }));
   return {
     props: {
-      time,
+      gigs,
+      //venues,
     },
   };
 }
