@@ -6,11 +6,7 @@ const LocationAndTime: FC = () => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setTime((time) => {
-        var dt = new Date(time);
-        dt.setSeconds(dt.getSeconds() + 1);
-        return dt;
-      });
+      setTime(new Date());
     }, 1000); // in milliseconds
     return () => clearInterval(intervalId);
   }, []);
