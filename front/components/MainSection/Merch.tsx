@@ -3,7 +3,7 @@ import MainSectionContainer from "../layout/MainSectionContainer";
 
 const Merch = () => {
   return (
-    <MainSectionContainer omitBorder>
+    <MainSectionContainer omitBorder id='merch'>
       <>
         <Text textDecoration="underline">MERCH</Text>
         <Box height="2em" />

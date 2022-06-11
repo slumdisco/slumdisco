@@ -13,6 +13,7 @@ import {
 } from "../endpoints/endpoints";
 import { pillStyle } from "../theme/styles";
 import Tilt from "react-parallax-tilt";
+import Link from "next/link";
 
 interface HomePageProps {
   gigs: GigInterface[];
@@ -45,21 +46,24 @@ const Home: NextPage<HomePageProps> = ({ gigs, mixes }) => {
           </Flex>
           <LocationAndTime />
         </Flex>
-        <Flex justify="start" width="100%" mb="1.5em" position='sticky'>
+        <Flex justify="start" width="100%" position='sticky' display={['inherit','inherit','none']}>
           {tabs.map((tab) => (
             <Tilt key={tab}>
               <Box>
                 {/* slightly more responsive this way */}
+                <Link href={`#${tab}`}>
                 <Badge {...pillStyle}>
                   <Text _hover={{ color: "white" }} fontSize="sm" color="red">
                     {tab}
                   </Text>
                 </Badge>
+                </Link>
               </Box>
             </Tilt>
           ))}
         </Flex>
         <Grid
+        mt="1.5em"
           width="100%"
           templateColumns={["1fr", "1fr","repeat(3, 1fr)"]}
           templateRows={["repeat(3, 1fr)", "1fr", "1fr"]}
