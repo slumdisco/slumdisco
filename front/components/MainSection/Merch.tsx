@@ -1,17 +1,15 @@
 import { Text } from "@chakra-ui/react";
-import MainSectionContainer from "../layout/MainSectionContainer"
+import MainSectionContainer from "../layout/MainSectionContainer";
 
-const Merch = ()=>{
-return(
+const Merch = () => {
+  return (
     <MainSectionContainer omitBorder>
-        <>
-        <Text textDecoration='underline'>
-            Merch
-        </Text>
+      <>
+        <Text textDecoration="underline">Merch</Text>
         <p>something something</p>
-        </>
+      </>
     </MainSectionContainer>
-)
-}
+  );
+};
 
 export default Merch;

@@ -15,21 +15,15 @@ const Footer: FC = () => {
       background="black"
       color="white"
     >
-      <Text fontSize='small'>©2022 slum disco soundsystem</Text>
+      <Text fontSize="small">©2022 slum disco soundsystem</Text>
     </Flex>
   );
 };
 const BaseLayout: React.FC<JSXChildrenType> = ({ children }) => {
-
   return (
     <>
-      <Flex
-        width="100vw"
-        flexDirection="column"
-      >
-        <Box
-        minH="90vh"
-        padding='1em'>
+      <Flex width="100vw" flexDirection="column">
+        <Box minH="90vh" padding="1em">
           {children}
         </Box>
         <Footer />

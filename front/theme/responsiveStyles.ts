@@ -1,3 +1,3 @@
-const flexDirection = ['column','row']
+const flexDirection = ["column", "row"];
 
-export {flexDirection};
+export { flexDirection };
