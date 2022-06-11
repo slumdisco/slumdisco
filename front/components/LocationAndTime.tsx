@@ -40,7 +40,7 @@ const LocationAndTime: FC = () => {
       </Text>
     </Flex>
   ) : (
-    ""
+    <></>
   );
 };
 
