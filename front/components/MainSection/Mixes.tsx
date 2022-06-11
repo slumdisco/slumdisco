@@ -75,7 +75,7 @@ const Mixes: FC<{ mixes: MixInterface[] }> = ({ mixes }) => {
       <>
         <Text textDecoration="underline">MIXES</Text>
         <Box height="2em" />
-        <Flex direction="column" pr={["0", "1.5em"]}>
+        <Flex direction="column" pr={["0","0", "1.5em"]}>
           {mixes
             .map((value) => ({ value, sort: Math.random() }))
             .sort((a, b) => a.sort - b.sort)
