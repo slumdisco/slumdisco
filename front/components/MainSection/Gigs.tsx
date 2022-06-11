@@ -66,7 +66,7 @@ const Gigs: FC<{ gigs: GigInterface[] }> = ({ gigs }) => {
       past: gigsWithStates.filter((x) => x.state === pastUpcoming.Past),
       upcoming: gigsWithStates.filter((x) => x.state === pastUpcoming.Upcoming),
     };
-  }, []);
+  }, [gigs]);
 
   const [currentState, setCurrentState] = useState(pastUpcoming.Past);
 
