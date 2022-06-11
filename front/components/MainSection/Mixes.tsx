@@ -64,7 +64,7 @@ const Mix: FC<{ mix: MixInterface }> = ({ mix }) => {
 
 const Mixes: FC<{ mixes: MixInterface[] }> = ({ mixes }) => {
   return (
-    <MainSectionContainer id='mixes'>
+    <MainSectionContainer id="mixes">
       <>
         <Text textDecoration="underline">MIXES</Text>
         <Box height="2em" />

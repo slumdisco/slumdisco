@@ -6,17 +6,17 @@ export type JSXChildrenType = {
 
 interface MainSectionContainer extends JSXChildrenType {
   omitBorder?: boolean;
-  id:string
+  id: string;
 }
 
 const MainSectionContainer: React.FC<MainSectionContainer> = ({
   children,
   omitBorder = false,
-  id
+  id,
 }) => {
   return (
     <Flex
-    id={id}
+      id={id}
       width="100%"
       direction="column"
       pb={["1em", "0"]}

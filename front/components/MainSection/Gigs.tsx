@@ -71,9 +71,9 @@ const Gigs: FC<{ gigs: GigInterface[] }> = ({ gigs }) => {
 
   const states = [pastUpcoming.Past, pastUpcoming.Upcoming];
   return (
-    <MainSectionContainer id='gigs'>
+    <MainSectionContainer id="gigs">
       <>
-        <Flex width="100%" justify="space-between" >
+        <Flex width="100%" justify="space-between">
           <Text textDecoration="underline">GIGS</Text>
           <Flex justify="end" pr="0.5em">
             {states.map((x) => (
@@ -101,12 +101,12 @@ const Gigs: FC<{ gigs: GigInterface[] }> = ({ gigs }) => {
         </Flex>
         <Accordion
           mt="2em"
-          mr={["0","0","1.5em"]}
+          mr={["0", "0", "1.5em"]}
           index={currentState === pastUpcoming.Past ? 0 : 1}
           allowMultiple
         >
           {states.map((state) => (
-            <AccordionItem key={state}>
+            <AccordionItem key={state} borderColor="black">
               <h2>
                 <AccordionButton
                   px="0"
