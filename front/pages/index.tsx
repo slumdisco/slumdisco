@@ -35,7 +35,7 @@ const Home: NextPage = (props) => {
         </Flex>
         <Flex justify="start" width="100%">
           {tabs.map((tab) => (
-            <Badge {...pillStyle}>
+            <Badge {...pillStyle} key={tab}>
               <Text _hover={{ color: "white" }} fontSize="sm" color="red">
                 {tab}
               </Text>
