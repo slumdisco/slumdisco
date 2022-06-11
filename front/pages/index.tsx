@@ -21,7 +21,7 @@ interface HomePageProps {
 }
 
 const Home: NextPage<HomePageProps> = ({ gigs, mixes }) => {
-  const tabs = ["mixes", "merch", "gigs"];
+  const tabs = ["mixes", "gigs", "merch"];
 
   return (
     <BaseLayout>
