@@ -17,7 +17,7 @@ const MainSectionContainer: React.FC<MainSectionContainer> = ({
       width="100%"
       direction="column"
       pb={["1em", "0"]}
-      borderRight={["none", omitBorder ? "none" : "1px"]}
+      borderRight={["none", "none", omitBorder ? "none" : "1px"]}
       borderBottom={["1px", "none"]}
       //padding='0.5em'
     >

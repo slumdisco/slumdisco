@@ -18,13 +18,13 @@ const AnimatedName: FC<{ text: string }> = ({ text }) => {
       fontWeight="bold"
       fontSize="3xl"
       height="1.5em"
-      maxWidth={["90vw", "20em"]}
+      maxWidth={["100vw", "80vw"]}
       overflow="hidden"
     >
       <Text ml={`-${offset * 1.8}px`}>
         {Array.from(Array(10))
           .map(() => text)
-          .join(" ")}
+          .join(" / ")}
       </Text>
     </Box>
   );

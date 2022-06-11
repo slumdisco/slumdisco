@@ -68,7 +68,7 @@ const Mixes: FC<{ mixes: MixInterface[] }> = ({ mixes }) => {
       <>
         <Text textDecoration="underline">MIXES</Text>
         <Box height="2em" />
-        <Flex direction="column" pr="1.5em">
+        <Flex direction="column" pr={["0", "1.5em"]}>
           {mixes.map((mix, i) => (
             <Mix mix={mix} key={i} />
           ))}

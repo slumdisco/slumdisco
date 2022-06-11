@@ -11,12 +11,11 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import Image from "next/image";
 import { FC, useMemo, useState } from "react";
 import { pillStyle } from "../../theme/styles";
 import MainSectionContainer from "../layout/MainSectionContainer";
-import Flags from "country-flag-icons/react/3x2";
 import getUnicodeFlagIcon from "country-flag-icons/unicode";
+import Tilt from "react-parallax-tilt";
 
 export interface GigInterface {
   tek: boolean;
@@ -78,24 +77,26 @@ const Gigs: FC<{ gigs: GigInterface[] }> = ({ gigs }) => {
           <Text textDecoration="underline">GIGS</Text>
           <Flex justify="end" pr="0.5em">
             {states.map((x) => (
-              <Badge
-                key={x}
-                {...pillStyle}
-                bgColor={currentState === x ? "blue" : "none"}
-                onClick={() => {
-                  setCurrentState(x);
-                }}
-                ml="1em"
-                cursor="pointer"
-                //textDecoration={currentState === x ? "underline" : "none"}
-              >
-                <Text
-                  fontSize="xs"
-                  color={currentState === x ? "white" : "black"}
+              <Tilt>
+                <Badge
+                  key={x}
+                  {...pillStyle}
+                  bgColor={currentState === x ? "blue" : "none"}
+                  onClick={() => {
+                    setCurrentState(x);
+                  }}
+                  ml="1em"
+                  cursor="pointer"
+                  //textDecoration={currentState === x ? "underline" : "none"}
                 >
-                  {x}
-                </Text>
-              </Badge>
+                  <Text
+                    fontSize="xs"
+                    color={currentState === x ? "white" : "black"}
+                  >
+                    {x}
+                  </Text>
+                </Badge>
+              </Tilt>
             ))}
           </Flex>
         </Flex>

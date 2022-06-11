@@ -1,4 +1,4 @@
-import { Badge, Flex, Grid, Text, VStack } from "@chakra-ui/react";
+import { Badge, Box, Flex, Grid, Text, VStack } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import AnimatedName from "../components/AnimatedName";
 import BaseLayout from "../components/layout/BaseLayout";
@@ -12,6 +12,7 @@ import {
   VENUES_TABLE_ENDPOINT,
 } from "../endpoints/endpoints";
 import { pillStyle } from "../theme/styles";
+import Tilt from "react-parallax-tilt";
 
 interface HomePageProps {
   gigs: GigInterface[];
@@ -23,10 +24,11 @@ const Home: NextPage<HomePageProps> = ({ gigs, mixes }) => {
 
   return (
     <BaseLayout>
-      <VStack spacing="1.5em">
+      <Flex direction="column">
         <Flex
-          flexBasis={1}
-          direction={["column", "row"]}
+          // id='ehehhe'
+          //   flexBasis={1}
+          //direction={["column", "row"]}
           justify="space-between"
         >
           <Flex direction="column">
@@ -39,30 +41,35 @@ const Home: NextPage<HomePageProps> = ({ gigs, mixes }) => {
               Another paragrapasddas goes here. sommething something sajdhsdksa
               sajkdas. askdh askd ksa das. askjdh askl sadaKS 122.
             </Text>
-            <AnimatedName text="Slum disco Soundsystem" />
+            <AnimatedName text="Slum Disco Soundsystem" />
           </Flex>
           <LocationAndTime />
         </Flex>
-        <Flex justify="start" width="100%">
+        <Flex justify="start" width="100%" mb="1.5em" position='sticky'>
           {tabs.map((tab) => (
-            <Badge {...pillStyle} key={tab}>
-              <Text _hover={{ color: "white" }} fontSize="sm" color="red">
-                {tab}
-              </Text>
-            </Badge>
+            <Tilt>
+              <Box>
+                {/* slightly more responsive this way */}
+                <Badge {...pillStyle} key={tab}>
+                  <Text _hover={{ color: "white" }} fontSize="sm" color="red">
+                    {tab}
+                  </Text>
+                </Badge>
+              </Box>
+            </Tilt>
           ))}
         </Flex>
         <Grid
           width="100%"
-          templateColumns={["1fr", "repeat(3, 1fr)"]}
-          templateRows={["repeat(3, 1fr)", "1fr"]}
+          templateColumns={["1fr", "1fr","repeat(3, 1fr)"]}
+          templateRows={["repeat(3, 1fr)", "1fr", "1fr"]}
           gap={6}
         >
           <Mixes mixes={mixes} />
           <Gigs gigs={gigs} />
           <Merch />
         </Grid>
-      </VStack>
+      </Flex>
     </BaseLayout>
   );
 };
