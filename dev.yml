@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  frontend:
+    build: ./front
+    volumes:
+      - ./front:/app
+      # - /app/node_modules
+    ports:
+      - 3000:3000
+    command: yarn dev
+    # stdin_open: true
+    # tty: true       #comment out to start with just shell 
