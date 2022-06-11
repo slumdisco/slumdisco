@@ -1,7 +1,7 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { faMinus, faPlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import MainSectionContainer from "../layout/MainSectionContainer";
 
 export interface MixInterface {
@@ -9,11 +9,16 @@ export interface MixInterface {
   embedded: string;
 }
 
-const Mix: FC<{ mix: MixInterface }> = ({ mix }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+const Mix: FC<{ mix: MixInterface; i: number }> = ({ mix, i }) => {
   const isUrl = mix.embedded[0] === "h";
+  const [isExpanded, setIsExpanded] = useState(i % 2 == 0 && !isUrl);
+  const [isSSR, setIsSSR] = useState(true);
 
-  return (
+  useEffect(() => {
+    setIsSSR(false);
+  }, []);
+
+  return !isSSR ? (
     <>
       <Flex
         width="100%"
@@ -59,6 +64,8 @@ const Mix: FC<{ mix: MixInterface }> = ({ mix }) => {
         )}
       </Flex>
     </>
+  ) : (
+    <div></div>
   );
 };
 
@@ -69,9 +76,13 @@ const Mixes: FC<{ mixes: MixInterface[] }> = ({ mixes }) => {
         <Text textDecoration="underline">MIXES</Text>
         <Box height="2em" />
         <Flex direction="column" pr={["0", "1.5em"]}>
-          {mixes.map((mix, i) => (
-            <Mix mix={mix} key={i} />
-          ))}
+          {mixes
+            .map((value) => ({ value, sort: Math.random() }))
+            .sort((a, b) => a.sort - b.sort)
+            .map(({ value }) => value)
+            .map((mix, i) => (
+              <Mix mix={mix} key={i} i={i} />
+            ))}
         </Flex>
       </>
     </MainSectionContainer>
